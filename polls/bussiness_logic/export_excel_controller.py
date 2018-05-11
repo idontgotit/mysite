@@ -23,7 +23,7 @@ class ExportExcelController:
     def build_data_pandas_from_csv(data):
         # build data from 8am-23pm
         df = pd.read_csv(data, header=0, skip_blank_lines=True,
-                         skipinitialspace=True, encoding='utf8')
+                         skipinitialspace=True, encoding='utf8', sep='delimiter')
         date_current = df['0'][0].split(' ')[0]
         df_filter8 = df[(df['0'] > date_current + ' 07:00:00') & (df['0'] < date_current + ' 09:00:00')]
         data_from9 = []
