@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>
+        CSV file upload and processing
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="margin-top: 30px;margin-left: 30px;">
+<h3>CSV file upload and processing</h3>
+<form action="{% url "index" %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file"
+           title="Upload csv file"
+           name="excel_file"
+           style="border: 1px solid black; padding: 5px;"
+           required="required">
+    <p>
+        <br/>
+        <input type="submit" class="btn btn-primary"
+               value="Upload and generate"
+               style="border: 1px solid green; padding:6px; border-radius: 3px; cursor: pointer;">
+</form>
+
+<p></p>
+<hr>
+</body>
+</html>
