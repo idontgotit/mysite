@@ -9,8 +9,7 @@ def index(request):
         return render(request, 'polls/index.html', {})
     else:
         excel_file = request.FILES["excel_file"]
-        data = excel_file.file
-        data_input = ExportExcelController.build_data_pandas_from_csv(data)
+        data_input = ExportExcelController.build_data_pandas_from_input_file(excel_file)
         output = ExportExcelController.export_excel(data_input)
         response_data = HttpResponse(output.read(),
                                      content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')

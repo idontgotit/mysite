@@ -24,7 +24,7 @@ SECRET_KEY = 'e1@sjzvgp+@_ynz=)_yws#rmmmuf-#nk-&*_i2nhhyhoxbki%c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mysite-django-excel.herokuapp.com']
+ALLOWED_HOSTS = ['mysite-django-excel.herokuapp.com', 'localhost']
 
 # Application definition
 
