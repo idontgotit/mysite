@@ -2,3 +2,4 @@ pandas
 traitlets
 Django==1.8.18
 djangorestframework==3.0.4
+xlrd
