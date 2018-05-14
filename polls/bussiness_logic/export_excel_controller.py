@@ -16,18 +16,18 @@ class ExportExcelController:
         for item in data_input.df_filter8:
             item.to_excel(writer, str(count), index=False, header=False)
             count += 1
-        for index in writer.sheets:
-            sheet = writer.sheets.get(index)
-            sheet.write_formula(0, 15, "=COUNTIFS(K:K\|K4)/COUNTIFS(K:K\|K1)")
-            sheet.write_formula(1, 15, "=AVERAGEIFS(E:E\|K:K\|K4)")
-            sheet.write_formula(2, 15, "=AVERAGEIFS(E:E\|K:K\|K4)")
-            sheet.write_formula(3, 15, "=Q3/SUM($Q$3:$Q$5)")
-            sheet.write_formula(4, 15, "=Q4/SUM($Q$3:$Q$5)")
-            sheet.write_formula(5, 15, "=Q5/SUM($Q$3:$Q$5)")
+#         for index in writer.sheets:
+#             sheet = writer.sheets.get(index)
+#             sheet.write_formula(0, 15, "=COUNTIFS(K:K\|K4)/COUNTIFS(K:K\|K1)")
+#             sheet.write_formula(1, 15, "=AVERAGEIFS(E:E\|K:K\|K4)")
+#             sheet.write_formula(2, 15, "=AVERAGEIFS(E:E\|K:K\|K4)")
+#             sheet.write_formula(3, 15, "=Q3/SUM($Q$3:$Q$5)")
+#             sheet.write_formula(4, 15, "=Q4/SUM($Q$3:$Q$5)")
+#             sheet.write_formula(5, 15, "=Q5/SUM($Q$3:$Q$5)")
 
-            sheet.write_formula(2, 16, '=COUNTIFS(K:K\|K4|E:E\|"<5")')
-            sheet.write_formula(3, 16, '=COUNTIFS(K:K\|K4;E:E\|">5"\|E:E\|"<10")')
-            sheet.write_formula(4, 16, '=COUNTIFS(K:K\|K4;E:E\|">10")')
+#             sheet.write_formula(2, 16, '=COUNTIFS(K:K\|K4|E:E\|"<5")')
+#             sheet.write_formula(3, 16, '=COUNTIFS(K:K\|K4;E:E\|">5"\|E:E\|"<10")')
+#             sheet.write_formula(4, 16, '=COUNTIFS(K:K\|K4;E:E\|">10")')
         writer.save()
         output.seek(0)
         return output
