@@ -11,7 +11,7 @@ def index(request):
         excel_file = request.FILES["excel_file"]
         data_input = ExportExcelController.build_data_pandas_from_input_file(excel_file)
         # data_output = ExportExcelController.calculate_results(data_input)
-        output = ExportExcelController.export_excel()
+        output = ExportExcelController.export_excel(data_input)
         response_data = HttpResponse(output.read(),
                                      content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
         response_data['Content-Disposition'] = 'attachment; filename=%s' % 'results.xlsx'
