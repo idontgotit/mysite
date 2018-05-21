@@ -6,6 +6,7 @@ from xlsxwriter import worksheet
 
 
 class ExportExcelController:
+
     @staticmethod
     def export_excel(data_input):
         # Create a Pandas Excel writer using XlsxWriter as the engine.
@@ -18,16 +19,20 @@ class ExportExcelController:
             count += 1
         for index in writer.sheets:
             sheet = writer.sheets.get(index)
-            sheet.write_formula(0, 15, "=COUNTIFS(K:K|K4)/COUNTIFS(K:K|K1)")
-            sheet.write_formula(1, 15, "=AVERAGEIFS(E:E|K:K|K4)")
-            sheet.write_formula(2, 15, "=AVERAGEIFS(E:E|K:K|K4)")
-            sheet.write_formula(3, 15, "=Q3/SUM($Q$3:$Q$5)")
-            sheet.write_formula(4, 15, "=Q4/SUM($Q$3:$Q$5)")
-            sheet.write_formula(5, 15, "=Q5/SUM($Q$3:$Q$5)")
+            sheet.write(4, 10, 'END_CLICKBUTTON_LS')
+            sheet.write(0, 15, "=COUNTIFS(K:K|K4)/COUNTIFS(K:K|K1)")
+            sheet.write(1, 15, "=AVERAGEIFS(E:E|K:K|K4)")
+            sheet.write(2, 15, "=AVERAGEIFS(E:E|K:K|K4)")
+            sheet.write(3, 15, "=Q3/SUM($Q$3:$Q$5)")
+            sheet.write(4, 15, "=Q4/SUM($Q$3:$Q$5)")
+            sheet.write(5, 15, "=Q5/SUM($Q$3:$Q$5)")
 
-            sheet.write_formula(2, 16, '=COUNTIFS(K:K|K4|E:E|"<5")')
-            sheet.write_formula(3, 16, '=COUNTIFS(K:K|K4;E:E|">5"|E:E|"<10")')
-            sheet.write_formula(4, 16, '=COUNTIFS(K:K|K4;E:E|">10")')
+            sheet.write(2, 16, '=COUNTIFS(K:K|K4|E:E|"<5")')
+            sheet.write(3, 16, '=COUNTIFS(K:K|K4;E:E|">5"|E:E|"<10")')
+            sheet.write(4, 16, '=COUNTIFS(K:K|K4;E:E|">10")')
+
+        workbook = writer.book
+        worksheet = workbook.add_worksheet(name='total')
         writer.save()
         output.seek(0)
         return output
@@ -38,9 +43,8 @@ class ExportExcelController:
         data_excel = data.file
         name_split = data.name.split('.')
         format_file = name_split[len(name_split) - 1]
-        if '.csv' in format_file:
-            df = pd.read_csv(data_excel, header=0, skip_blank_lines=True,
-                             skipinitialspace=True, encoding='utf8')
+        if 'csv' in format_file:
+            df = pd.read_csv(data_excel, header=0, encoding='utf8')
         else:
             df = pd.read_excel(data_excel, header=0, encoding='utf8')
 
