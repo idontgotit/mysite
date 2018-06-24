@@ -5,4 +5,5 @@ djangorestframework==3.0.4
 xlrd
 xlsxwriter
 gunicorn
-django-registration
+celery
+django_celery_results
