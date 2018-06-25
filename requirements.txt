@@ -7,3 +7,4 @@ xlsxwriter
 gunicorn
 celery
 django_celery_results
+django-registration
