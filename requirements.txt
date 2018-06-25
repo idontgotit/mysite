@@ -1,9 +1,10 @@
 pandas
 traitlets
-Django==1.8.18
+django
 djangorestframework==3.0.4
 xlrd
 xlsxwriter
 gunicorn
 celery
 django_celery_results
+django-registration
