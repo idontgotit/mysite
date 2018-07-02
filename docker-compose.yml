@@ -24,7 +24,6 @@ services:
     ports:
       - "8081:8081"
       - "5555:5555"
-
     depends_on:
       - rabbit1
 
@@ -41,4 +40,5 @@ services:
       - web
     depends_on:
       - rabbit1
+
 

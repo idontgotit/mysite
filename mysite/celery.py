@@ -22,6 +22,6 @@ def debug_task(self):
     print('Request: {0!r}'.format(self.request))
 
 
-@app.task(bind=True)
+@app.task()
 def add(x, y):
     return x + y

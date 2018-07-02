@@ -2,10 +2,12 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 from polls.bussiness_logic.export_excel_controller import ExportExcelController
+from mysite.tasks import add
 
 
 def index(request):
     if "GET" == request.method:
+        add.delay(4, 4)
         return render(request, 'polls/index.html', {})
     else:
         excel_file = request.FILES["excel_file"]

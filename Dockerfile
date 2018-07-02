@@ -5,5 +5,3 @@ WORKDIR /code
 ADD requirements.txt /code/
 RUN pip install -r requirements.txt
 ADD . /code/
-
-#ENTRYPOINT celery -A mysite worker --concurrency=20 --loglevel=info
