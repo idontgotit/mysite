@@ -27,7 +27,7 @@
 
 
 <p></p>
-<p id="log">Loading, you should wait a bit...</p>
+<p id="log">Loading...</p>
 <img src="" id="test" />
 <hr>
 </body>
@@ -39,7 +39,7 @@ function getPicture (the_user_id, your_div_id){
     
     // get an array of random photos
     $.getJSON(
-        "https://api.flickr.com/services/rest/",
+        "http://api.flickr.com/services/rest/",
         {
             //method: 'flickr.interestingness.getList',
             method: 'flickr.photos.search',
@@ -47,8 +47,10 @@ function getPicture (the_user_id, your_div_id){
             format: 'json',
             nojsoncallback: 1,
             text:"dog",
-            tag_mode:"dogs",
-            per_page: 100 // you can increase this to get a bigger array
+            tag_mode:"dogs, dog, cat, cats",
+            page: Math.floor(Math.random()*100),
+            safe_search: '1',
+            per_page: 50 // you can increase this to get a bigger array
         },
         function(data){
             
@@ -61,26 +63,18 @@ function getPicture (the_user_id, your_div_id){
                 
                 // now call the flickr API and get the picture with a nice size
                 $.getJSON(
-                    "https://api.flickr.com/services/rest/",
+                    "http://api.flickr.com/services/rest/",
                     {
-                        method: 'flickr.photos.search',
+                        method: 'flickr.photos.getSizes',
                         api_key: apiKey,
+                        photo_id: photo.id,
                         format: 'json',
-                        nojsoncallback: 1,
-                        text:"dog",
-                        tag_mode:"dogs, dog, cat, cats",
-                        page: Math.floor(Math.random()*100),
-                        safe_search: '1',
-                        per_page: 50 
+                        nojsoncallback: 1
                     },
                     function(response){
                         if(response.stat == 'ok'){
                             // $("#log").text("Second JSON is fine");
-                            data_source = response.sizes.size[5]
-                            if (data_source == undefined){
-                                data_source = response.sizes.size[4]
-                            }
-                            var the_url = data_source.source;
+                            var the_url = response.sizes.size[5].source;
                             $("#"+your_div_id).attr("src", the_url);
                         }
                         else{
@@ -101,4 +95,3 @@ function getPicture (the_user_id, your_div_id){
 
 </script>
 </html>
-
