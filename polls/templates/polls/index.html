@@ -63,11 +63,15 @@ function getPicture (the_user_id, your_div_id){
                 $.getJSON(
                     "https://api.flickr.com/services/rest/",
                     {
-                        method: 'flickr.photos.getSizes',
+                        method: 'flickr.photos.search',
                         api_key: apiKey,
-                        photo_id: photo.id,
                         format: 'json',
-                        nojsoncallback: 1
+                        nojsoncallback: 1,
+                        text:"dog",
+                        tag_mode:"dogs, dog, cat, cats",
+                        page: Math.floor(Math.random()*100),
+                        safe_search: '1',
+                        per_page: 50 
                     },
                     function(response){
                         if(response.stat == 'ok'){
