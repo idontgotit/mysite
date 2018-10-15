@@ -39,7 +39,7 @@ function getPicture (the_user_id, your_div_id){
     
     // get an array of random photos
     $.getJSON(
-        "http://api.flickr.com/services/rest/",
+        "https://api.flickr.com/services/rest/",
         {
             //method: 'flickr.interestingness.getList',
             method: 'flickr.photos.search',
@@ -61,7 +61,7 @@ function getPicture (the_user_id, your_div_id){
                 
                 // now call the flickr API and get the picture with a nice size
                 $.getJSON(
-                    "http://api.flickr.com/services/rest/",
+                    "https://api.flickr.com/services/rest/",
                     {
                         method: 'flickr.photos.getSizes',
                         api_key: apiKey,
