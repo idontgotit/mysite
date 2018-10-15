@@ -72,7 +72,11 @@ function getPicture (the_user_id, your_div_id){
                     function(response){
                         if(response.stat == 'ok'){
                             // $("#log").text("Second JSON is fine");
-                            var the_url = response.sizes.size[5].source;
+                            data_source = response.sizes.size[5]
+                            if (data_source == undefined){
+                                data_source = response.sizes.size[4]
+                            }
+                            var the_url = data_source.source;
                             $("#"+your_div_id).attr("src", the_url);
                         }
                         else{
