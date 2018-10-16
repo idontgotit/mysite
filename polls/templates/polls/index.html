@@ -27,6 +27,7 @@
 
 
 <p></p>
+<p id="quote"></p>
 <p id="log">Loading...</p>
 <img src="" id="test" />
 <hr>
@@ -36,7 +37,17 @@
     getPicture ("36587311@N08", "test");
 function getPicture (the_user_id, your_div_id){
     var apiKey = "80882b00609df75b919104b460459462"; // replace this with your API key
-    
+    $.getJSON(
+        "https://talaikis.com/api/quotes/random/",
+        {
+            api_key: apiKey,
+            format: 'json',
+            nojsoncallback: 1,
+        },
+        function(data){
+            $("#quote").text(data.quote + ' - ' + data.author);
+        }
+    );
     // get an array of random photos
     $.getJSON(
         "https://api.flickr.com/services/rest/",
