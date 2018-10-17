@@ -27,9 +27,9 @@
 
 
 <p></p>
-<p id="quote"></p>
+<!-- <p id="quote"></p>
 <p id="log">Loading...</p>
-<img src="" id="test" />
+<img src="" id="test" /> -->
 <hr>
 </body>
 
@@ -45,6 +45,7 @@ function getPicture (the_user_id, your_div_id){
             nojsoncallback: 1,
         },
         function(data){
+            return
             $("#quote").text(data.quote + ' - ' + data.author);
         }
     );
@@ -64,7 +65,7 @@ function getPicture (the_user_id, your_div_id){
             per_page: 55 // you can increase this to get a bigger array
         },
         function(data){
-            
+            return
             // if everything went good
             if(data.stat == 'ok'){
                 
