@@ -1,6 +1,6 @@
 pandas
 traitlets
-Django==1.8.18
+Django==1.11.16
 djangorestframework==3.0.4
 xlrd
 xlsxwriter
