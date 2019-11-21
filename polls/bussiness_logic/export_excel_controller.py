@@ -117,7 +117,7 @@ class BaseExcelController:
         data_frame = self.data
         list_header_name = list(data_frame)
         data_frame = self.__update_default_value(data_frame, default_value)
-        for index in range(1, len(data_frame.index)):
+        for index in range(0, len(data_frame.index)):
             if index in empty_line:
                 continue
             temp_item = {}
